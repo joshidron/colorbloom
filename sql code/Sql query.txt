@@ -1,0 +1,157 @@
+-- Database creation
+CREATE DATABASE colorcrazedb1;
+USE colorcrazedb1;
+
+-- Users table (for both parents and children)
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50),
+    user_type ENUM('parent', 'child') NOT NULL,
+    parent_id INT NULL, -- For child accounts, links to parent
+    date_of_birth DATE,
+    profile_image VARCHAR(255),
+    account_created DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_login DATETIME,
+    is_active BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (parent_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- Subscription plans table
+CREATE TABLE subscription_plans (
+    plan_id INT AUTO_INCREMENT PRIMARY KEY,
+    plan_name VARCHAR(50) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    duration_days INT NOT NULL,
+    max_children INT DEFAULT 1,
+    features JSON,
+    is_active BOOLEAN DEFAULT TRUE
+);
+
+-- User subscriptions table
+CREATE TABLE user_subscriptions (
+    subscription_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    plan_id INT NOT NULL,
+    start_date DATETIME NOT NULL,
+    end_date DATETIME NOT NULL,
+    payment_status ENUM('pending', 'paid', 'failed', 'refunded') DEFAULT 'pending',
+    transaction_id VARCHAR(100),
+    auto_renew BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (plan_id) REFERENCES subscription_plans(plan_id)
+);
+
+-- Feedback table
+CREATE TABLE feedback (
+    feedback_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    email VARCHAR(100) NOT NULL,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    emotion VARCHAR(20),
+    favorite_feature VARCHAR(50),
+    message TEXT,
+    submission_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_anonymous BOOLEAN DEFAULT FALSE,
+    status ENUM('new', 'reviewed', 'responded') DEFAULT 'new',
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE SET NULL
+);
+
+-- Child profiles table (for parent accounts to manage multiple children)
+CREATE TABLE child_profiles (
+    child_id INT AUTO_INCREMENT PRIMARY KEY,
+    parent_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    nickname VARCHAR(50),
+    age INT,
+    avatar VARCHAR(255),
+    learning_level VARCHAR(50),
+    interests JSON,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (parent_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- Activity tracking table
+CREATE TABLE activity_tracking (
+    activity_id INT AUTO_INCREMENT PRIMARY KEY,
+    child_id INT NOT NULL,
+    activity_type ENUM('game', 'story', 'rhyme', 'drawing', 'alphabet', 'comic', 'ai_chat') NOT NULL,
+    activity_name VARCHAR(100) NOT NULL,
+    duration_minutes INT NOT NULL,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    learning_outcomes JSON,
+    FOREIGN KEY (child_id) REFERENCES child_profiles(child_id) ON DELETE CASCADE
+);
+
+-- Screen time controls table
+CREATE TABLE screen_time_controls (
+    control_id INT AUTO_INCREMENT PRIMARY KEY,
+    parent_id INT NOT NULL,
+    child_id INT NOT NULL,
+    max_daily_minutes INT NOT NULL,
+    schedule JSON, -- Could store allowed times/days
+    is_active BOOLEAN DEFAULT TRUE,
+    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (parent_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (child_id) REFERENCES child_profiles(child_id) ON DELETE CASCADE
+);
+
+-- Content categories table
+CREATE TABLE content_categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    description TEXT,
+    age_min INT,
+    age_max INT,
+    icon VARCHAR(50)
+);
+
+-- Content items table
+CREATE TABLE content_items (
+    content_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT NOT NULL,
+    title VARCHAR(100) NOT NULL,
+    description TEXT,
+    content_type ENUM('game', 'story', 'rhyme', 'drawing', 'alphabet', 'comic', 'video') NOT NULL,
+    content_url VARCHAR(255) NOT NULL,
+    thumbnail_url VARCHAR(255),
+    duration_minutes INT,
+    difficulty_level VARCHAR(20),
+    learning_objectives JSON,
+    is_premium BOOLEAN DEFAULT FALSE,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (category_id) REFERENCES content_categories(category_id)
+);
+
+-- AI chat logs table
+CREATE TABLE ai_chat_logs (
+    chat_id INT AUTO_INCREMENT PRIMARY KEY,
+    child_id INT NOT NULL,
+    user_message TEXT NOT NULL,
+    ai_response TEXT NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    sentiment_analysis VARCHAR(20),
+    learning_topic VARCHAR(50),
+    FOREIGN KEY (child_id) REFERENCES child_profiles(child_id) ON DELETE CASCADE
+);
+
+-- Insert default subscription plans
+INSERT INTO subscription_plans (plan_name, description, price, duration_days, max_children, features) VALUES
+('Basic Plan', 'Access to basic games and content', 5.00, 30, 1, '["Access to games", "Monthly newsletter", "Fun activities"]'),
+('Premium Plan', 'Full access to all educational content', 10.00, 30, 1, '["All Basic features", "Exclusive content", "Learning materials", "Special events"]'),
+('Family Plan', 'Premium access for up to 4 children', 15.00, 30, 4, '["All Premium features", "Parent dashboard", "Personalized content"]');
+
+-- Insert default content categories
+INSERT INTO content_categories (name, description, age_min, age_max, icon) VALUES
+('Games', 'Educational games for learning', 4, 12, 'game-controller'),
+('Stories', 'Moral and ethical stories', 4, 12, 'book'),
+('Rhymes', 'Fun and educational rhymes', 4, 8, 'music-note'),
+('Drawing', 'Creative drawing activities', 4, 12, 'color-palette'),
+('Alphabet', 'Alphabet learning tools', 4, 6, 'alphabet'),
+('Comics', 'Fun educational comics', 6, 12, 'comic-book'),
+('AI Chat', 'Interactive AI learning buddy', 4, 12, 'robot');

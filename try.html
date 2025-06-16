@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register - Color Craze</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+  <style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+body {
+  background-color: #f6e2c1;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  margin-top: 10%;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px; /* increased width for rectangular shape */
+  margin: 20px;
+  height: 100%;
+  max-height: 300px;
+}
+
+.form-container {
+  background: #fff;
+  border-radius: 30px;
+  padding: 25px 40px; /* reduced vertical, increased horizontal padding */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+
+  display: flex;           /* make form-container flex */
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.form-details {
+  flex: 3;                /* main form inputs area */
+}
+
+.user-type-selector {
+  flex: 1;                /* user choice area on right */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: flex-start;
+  margin-top: 10px;
+}
+
+.form-title {
+  font-size: 2.5rem;
+  color: #ff6b6b;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 0 #ffe66d;
+  text-align: left;
+}
+
+.input-group {
+  margin-bottom: 15px; /* slightly reduced spacing */
+  position: relative;
+}
+
+.input-label {
+  display: block;
+  font-size: 1.2rem;
+  color: #4d96ff;
+  margin-bottom: 8px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 20px; /* slightly smaller vertical padding */
+  border: 3px solid #e0e0e0;
+  border-radius: 15px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.input-field:focus {
+  border-color: #4d96ff;
+  box-shadow: 0 0 0 3px rgba(77, 150, 255, 0.2);
+}
+
+.input-icon {
+  position: absolute;
+  right: 15px;
+  top: 47px;
+  font-size: 1.2rem;
+}
+
+.button {
+  width: 100%;
+  padding: 15px;
+  background-color: #4d96ff;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 25px; /* slightly less margin */
+}
+
+.button:hover {
+  background-color: #3a7bd5;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.switch-form {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #666;
+}
+
+.switch-btn {
+  color: #4d96ff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.switch-btn:hover {
+  color: #3a7bd5;
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  display: none;
+}
+
+.input-field.error {
+  border-color: #ff6b6b;
+}
+
+/* User Type Styles */
+.user-type-option {
+  margin-bottom: 10px;
+}
+
+.user-type-option input {
+  display: none;
+}
+
+.user-box {
+  background-color: #fff;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  padding: 15px 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+}
+
+.user-box i {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.user-box span {
+  font-weight: bold;
+  display: block;
+}
+
+.kid-box {
+  background-color: #ffe0e0;
+  border-color: #ff6b6b;
+}
+
+.parent-box {
+  background-color: #e0ffe0;
+  border-color: #4caf50;
+}
+
+.admin-box {
+  background-color: #f3e0ff;
+  border-color: #9c27b0;
+}
+
+.user-type-option input:checked + .user-box {
+  border: 3px solid #222;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
+}
+
+/* Success Message */
+.success-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100px);
+  background-color: #7ed957;
+  color: white;
+  padding: 15px 30px;
+  border-radius: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 10;
+  opacity: 0;
+}
+
+.success-message.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+  }
+
+  .user-type-selector {
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .user-type-option {
+    flex: 1 1 30%;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- Floating Shapes -->
+<div class="float-element star" style="top: 10%; left: 10%;"></div>
+<div class="float-element cloud" style="top: 20%; right: 15%;"></div>
+<div class="float-element heart" style="bottom: 10%; left: 20%;"></div>
+
+<!-- Form Container -->
+<div class="container">
+  <div class="form-container">
+
+    <div class="character">
+      <div class="character-body">
+        <div class="character-ear character-ear-left"></div>
+        <div class="character-ear character-ear-right"></div>
+        <div class="character-eye character-eye-left"><div class="character-pupil"></div></div>
+        <div class="character-eye character-eye-right"><div class="character-pupil"></div></div>
+        <div class="character-mouth"></div>
+      </div>
+    </div>
+
+    <div class="form-details">
+      <h1 class="form-title">Join Us!</h1>
+      <form id="register-form" action="php/register.php" method="POST">
+
+        <div class="input-group">
+          <label class="input-label" for="username">Username</label>
+          <input type="text" id="username" name="username" class="input-field" placeholder="Choose a username" required />
+          <div class="input-icon">👤</div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="email">Email</label>
+          <input type="email" id="email" name="email" class="input-field" placeholder="Enter your email" required />
+          <div class="input-icon">✉️</div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="password">Password</label>
+          <input type="password" id="password" name="password" class="input-field" placeholder="Create a password" required />
+          <div class="input-icon">🔒</div>
+        </div>
+
+        <div class="input-group">
+          <label class="input-label" for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" name="confirm_password" class="input-field" placeholder="Confirm password" required />
+          <div class="input-icon">🔐</div>
+        </div>
+
+        <button type="submit" class="button">Create Account</button>
+
+        <div class="switch-form">
+          Already have an account? <a href="login-form.html" class="switch-btn">Login here</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="user-type-selector">
+      <label class="user-type-option">
+        <input type="radio" name="userType" value="kid" id="kid" checked />
+        <div class="user-box kid-box">
+          <i class="fas fa-child"></i>
+          <span>Kid</span>
+        </div>
+      </label>
+
+      <label class="user-type-option">
+        <input type="radio" name="userType" value="parent" id="parent" />
+        <div class="user-box parent-box">
+          <i class="fas fa-user-friends"></i>
+          <span>Parent</span>
+        </div>
+      </label>
+
+      <label class="user-type-option">
+        <input type="radio" name="userType" value="admin" id="admin" />
+        <div class="user-box admin-box">
+          <i class="fas fa-user-tie"></i>
+          <span>Admin</span>
+        </div>
+      </label>
+    </div>
+
+  </div>
+</div>
+
+<div class="success-message" id="success-message">Success! 🎉</div>
+<script src="js/login.js"></script>
+
+</body>
+</html>

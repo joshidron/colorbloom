@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - Kids Website</title>
+    <link rel="stylesheet" href="css/othernev.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* --- Same styles as before, no change --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+        
+        body {
+            background-color: #f6e2c1;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            margin-top:6%;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 20px;
+        }
+        
+        .form-container {
+            position: relative;
+            width: 100%;
+            background: white;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0 #ffe66d;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .input-label {
+            display: block;
+            font-size: 1.2rem;
+            color: #4d96ff;
+            margin-bottom: 8px;
+        }
+        
+        .input-field, select {
+            width: 100%;
+            padding: 12px 20px;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+            appearance: none;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        .input-field:focus, select:focus {
+            border-color: #4d96ff;
+            box-shadow: 0 0 0 3px rgba(77, 150, 255, 0.2);
+        }
+        
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 47px;
+            font-size: 1.2rem;
+        }
+        
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #4d96ff;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .button:hover {
+            background-color: #3a7bd5;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .button:active {
+            transform: translateY(0);
+        }
+        
+        .switch-form {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .switch-btn {
+            color: #4d96ff;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .switch-btn:hover {
+            color: #3a7bd5;
+            text-decoration: underline;
+        }
+        
+        .error-message {
+            color: #ff6b6b;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .input-field.error, select.error {
+            border-color: #ff6b6b;
+        }
+        
+        /* Character */
+        .character {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            z-index: 3;
+            top: 20px;
+            right: 30px;
+            transition: all 0.5s ease;
+        }
+        
+        .character-body {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background-color: #ffe66d;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+        }
+        
+        .character-eye {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            top: 25px;
+        }
+        
+        .character-eye-left {
+            left: 20px;
+        }
+        
+        .character-eye-right {
+            right: 20px;
+        }
+        
+        .character-pupil {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            background-color: black;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+        }
+        
+        .character-mouth {
+            position: absolute;
+            width: 30px;
+            height: 15px;
+            background-color: white;
+            border-radius: 0 0 15px 15px;
+            top: 45px;
+            overflow: hidden;
+        }
+        
+        .character-ear {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: inherit;
+            border-radius: 50%;
+        }
+        
+        .character-ear-left {
+            top: -10px;
+            left: 10px;
+        }
+        
+        .character-ear-right {
+            top: -10px;
+            right: 10px;
+        }
+        
+        .speech-bubble {
+            position: absolute;
+            background-color: white;
+            border-radius: 20px;
+            padding: 10px 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            z-index: 4;
+            top: 20px;
+            left: 540px;
+            max-width: 150px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-left-color: white;
+            right: -20px;
+            top: 20px;
+        }
+        
+        /* Floating elements */
+        .float-element {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.6;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .star {
+            width: 30px;
+            height: 30px;
+            background-color: #ffe66d;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        
+        .cloud {
+            width: 60px;
+            height: 30px;
+            background-color: white;
+            border-radius: 30px;
+        }
+        
+        .heart {
+            width: 30px;
+            height: 30px;
+            background-color: #ff6b6b;
+            position: relative;
+            transform: rotate(45deg);
+        }
+        
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+        }
+        
+        .heart::before {
+            top: -15px;
+            left: 0;
+        }
+        
+        .heart::after {
+            top: 0;
+            left: -15px;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+        
+        /* Alert message styles */
+        .alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 90%;
+            animation: fade-in 0.3s ease-out;
+        }
+        
+        .alert-error {
+            background-color: #ff6b6b;
+        }
+        
+        .alert-success {
+            background-color: #7ed957;
+        }
+        
+        .alert-info {
+            background-color: #4d96ff;
+        }
+        
+        .alert-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            margin-left: 15px;
+            cursor: pointer;
+            padding: 0 0 0 10px;
+        }
+        
+        .fade-in {
+            animation: fade-in 0.3s ease-out;
+        }
+        
+        .fade-out {
+            animation: fade-out 0.3s ease-in;
+        }
+        
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        
+        @keyframes fade-out {
+            from { opacity: 1; transform: translateX(-50%) translateY(0); }
+            to { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+        }
+        
+        /* Media queries */
+        @media (max-width: 768px) {
+            .character {
+                top: 10px;
+                right: 20px;
+            }
+            
+            .speech-bubble {
+                top: 20px;
+                right: 100px;
+                left: auto;
+            }
+        }
+        
+        .user-type-selector {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .user-type-option {
+            flex: 1 1 30%;
+        }
+        
+        .user-type-option input {
+            display: none;
+        }
+        
+        .user-box {
+            background-color: #fff;
+            border: 3px solid transparent;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .user-box i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .user-box span {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .kid-box {
+            background-color: #ffe0e0;
+            border-color: #ff6b6b;
+        }
+        
+        .parent-box {
+            background-color: #e0ffe0;
+            border-color: #4caf50;
+        }
+        
+        .admin-box {
+            background-color: #f3e0ff;
+            border-color: #9c27b0;
+        }
+        
+        /* Highlight selected box */
+        .user-type-option input:checked + .user-box {
+            border: 3px solid #222;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+        }
+        
+        /* Remember me checkbox styling */
+        .remember-group {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .remember-group input {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Password toggle button */
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 47px;
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        /* Ripple effect styles */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            animation: ripple-effect 0.6s linear;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            width: 100px;
+            height: 100px;
+            z-index: 10;
+        }
+        
+        @keyframes ripple-effect {
+            from {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0.7;
+            }
+            to {
+                transform: translate(-50%, -50%) scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="glass-nav">
+        <div class="logo">
+            <a href="index.html"><h1>Color<span>Craze</span></h1></a>
+         </div>
+        <ul class="nav-links">
+                 
+            <li><a href="login-form.html"><i class="fas fa-user"></i> Login</a></li>
+            <li><a href="Subscription.html"><i class="fas fa-newspaper"></i> Subscription</a></li>
+            <li><a href="about-page.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="feedback-page.html"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Character with eyes and mouth -->
+        <div class="character">
+            <div class="character-body">
+                <div class="character-eye character-eye-left">
+                    <div class="character-pupil"></div>
+                </div>
+                <div class="character-eye character-eye-right">
+                    <div class="character-pupil"></div>
+                </div>
+                <div class="character-mouth"></div>
+            </div>
+            <div class="character-ear character-ear-left"></div>
+            <div class="character-ear character-ear-right"></div>
+        </div>
+
+        <!-- Floating elements -->
+        <div class="float-element star" style="top: 10px; left: 50px; animation-delay: 0s;"></div>
+        <div class="float-element cloud" style="top: 200px; right: 50px; animation-delay: 3s;"></div>
+        <div class="float-element heart" style="top: 350px; left: 100px; animation-delay: 6s;"></div>
+
+        <form id="loginForm" class="form-container" novalidate>
+            <h2 class="form-title">Login</h2>
+            
+            <div class="input-group">
+                <label for="email" class="input-label">Email</label>
+                <input type="email" id="email" name="email" class="input-field" placeholder="Enter your email" required />
+                <div class="error-message" id="email-error"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="password" class="input-label">Password</label>
+                <div style="position: relative;">
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Enter your password" required />
+                    <button type="button" class="password-toggle toggle-password" aria-label="Show password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="error-message" id="password-error"></div>
+            </div>
+
+            <div class="remember-group">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Login as:</label>
+                <div class="user-type-selector">
+                    <label class="user-type-option">
+                        <input type="radio" name="userType" value="kid" id="kid" checked />
+                        <div class="user-box kid-box">
+                            <i class="fas fa-child"></i>
+                            <span>Kid</span>
+                        </div>
+                    </label>
+                    <label class="user-type-option">
+                        <input type="radio" name="userType" value="parent" id="parent" />
+                        <div class="user-box parent-box">
+                            <i class="fas fa-user-friends"></i>
+                            <span>Parent</span>
+                        </div>
+                    </label>
+                    <label class="user-type-option">
+                        <input type="radio" name="userType" value="admin" id="admin" />
+                        <div class="user-box admin-box">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Admin</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="error-message" id="userType-error"></div>
+            </div>
+
+            <button type="submit" class="button login-btn">Login</button>
+            
+            <p class="switch-form">
+                Don't have an account? 
+                <a href="register-page.html" class="switch-btn">Register</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="js/login.js"></script>
+    <script>
+        // Ripple effect on button
+        document.querySelector('.login-btn')?.addEventListener('click', (e) => {
+            const button = e.currentTarget;
+            const circle = document.createElement('span');
+            circle.classList.add('ripple');
+            button.appendChild(circle);
+
+            const rect = button.getBoundingClientRect();
+            circle.style.left = e.clientX - rect.left + 'px';
+            circle.style.top = e.clientY - rect.top + 'px';
+
+            setTimeout(() => circle.remove(), 600);
+        });
+
+        // Character animation based on input focus
+        document.querySelectorAll('.input-field').forEach(input => {
+            input.addEventListener('focus', () => {
+                const character = document.querySelector('.character');
+                if (character) {
+                    character.style.transform = 'translateY(-10px)';
+                    const mouth = character.querySelector('.character-mouth');
+                    if (mouth) {
+                        mouth.style.height = '8px';
+                        mouth.style.borderRadius = '8px 8px 15px 15px';
+                    }
+                }
+            });
+
+            input.addEventListener('blur', () => {
+                const character = document.querySelector('.character');
+                if (character) {
+                    character.style.transform = 'translateY(0)';
+                    const mouth = character.querySelector('.character-mouth');
+                    if (mouth) {
+                        mouth.style.height = '15px';
+                        mouth.style.borderRadius = '0 0 15px 15px';
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="js/nav.js"></script>
+</body>
+</html>

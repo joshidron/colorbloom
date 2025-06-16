@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - Kids Website</title>
+    <link rel="stylesheet" href="css/robonev.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #ffecb3;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #ff4081;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            top: 15vh;
+            animation: fadeIn 2s ease-in-out;
+        }
+        .bot-image {
+            width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            animation: bounce 1.5s infinite alternate;
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+            animation: bounce 1.5s infinite alternate;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <button class="hamburger"><i class="fas fa-bars"></i></button>
+    <ul class="navbar-nav">
+        <li><a class="nav-link" href="index.html" data-text="Home"> <i class="fas fa-home" style="color: red; transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightpink'" onmouseout="this.style.backgroundColor=''"> </i> </a> </li>
+        <li><a class="nav-link" href="game.html" data-text="Fun Games"><i class="fas fa-gamepad" style="color: blue;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightgreen'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+        <li><a class="nav-link" href="e-larning.html" data-text="E-Learning"><i class="fas fa-graduation-cap" style="color: orangered;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='peru'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+        <li><a class="nav-link" href="creative.html" data-text="Creative Zone"><i class="fas fa-paint-brush" style="color: lawngreen;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='plum'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+        <li><a class="nav-link" href="story.html" data-text="Stories"><i class="fas fa-book-open" style="color: gold;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightcoral'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+        <li><a class="nav-link" href="rhymes.html" data-text="Rhymes"><i class="fas fa-music" style="color: purple; transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+        <li><a class="nav-link" href="comic.html" data-text="Comics"><i class="fas fa-book" style="color: chocolate;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='khaki'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+        <li><a class="nav-link feature-link" href="robot.html" data-text="Titans Bot"><i class="fas fa-robot" style="color: rgb(115, 184, 231); transition: background 0.3s;"onmouseover="this.style.backgroundColor='lightgray'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+    </ul>
+</nav>
+    <div class="container">
+        <h1>🌟 Something Fun is Coming Soon! 🎨</h1>
+        <p>We are working on an amazing experience for kids. Stay tuned!</p>
+        
+        <!-- Bot Image and Coming Soon Text -->
+        <img src="image/bot/bot.jpg" alt="Speaking Bot" class="bot-image">
+        <h1 id="coming-soon">Coming Soon!</h1>
+    </div>
+    <script src="js/nav.js"></script>
+    <script>
+        function speakText(text) {
+            let speech = new SpeechSynthesisUtterance(text);
+            speech.lang = "en-US";
+            speech.rate = 0.9;
+            speech.pitch = 1;
+            window.speechSynthesis.speak(speech);
+        }
+        
+        window.onload = function() {
+            speakText("Coming Soon!");
+        };
+    </script>
+</body>
+</html>
