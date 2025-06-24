@@ -114,3 +114,32 @@ username: document.getElementById('register-username')?.value.trim(),
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const pupils = document.querySelectorAll('.character-pupil');
+    const character = document.querySelector('.character');
+    const inputFields = document.querySelectorAll('input, textarea, select');
+
+    // 👀 Make eyes follow the cursor
+    document.addEventListener('mousemove', (e) => {
+        pupils.forEach(pupil => {
+            const rect = pupil.parentElement.getBoundingClientRect();
+            const x = (e.clientX - rect.left - rect.width / 2) / 20;
+            const y = (e.clientY - rect.top - rect.height / 2) / 20;
+
+            pupil.style.transform = `translate(${Math.max(-3, Math.min(3, x))}px, ${Math.max(-3, Math.min(3, y))}px)`;
+        });
+    });
+
+    // 😲 Character reacts when input field is focused
+    inputFields.forEach(input => {
+        input.addEventListener('focus', () => {
+            character.style.transition = 'transform 0.3s ease';
+            character.style.transform = 'translateY(-15px)';
+        });
+
+        input.addEventListener('blur', () => {
+            character.style.transform = 'translateY(0)';
+        });
+    });
+});
