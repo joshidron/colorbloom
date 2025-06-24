@@ -1,13 +1,12 @@
-
- /* Glass Navbar Styles */
- .glass-nav {
+/* Glass Navbar Styles */
+.glass-nav {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
     max-width: 1200px;
-    padding: 20px;
+    padding: 15px 30px;
     background: rgb(240, 179, 135);
     backdrop-filter: blur(10px);
     border-radius: 20px;
@@ -16,25 +15,36 @@
     align-items: center;
     z-index: 1000;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10%;
 }
 
+/* Logo */
 .logo h1 {
     color: white;
     font-size: 24px;
+    margin: 0;
 }
 
 .logo span {
     color: #ff6b6b;
 }
+
 .logo a {
     text-decoration: none;
 }
 
+/* Navigation Links - Desktop */
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease;
+    align-items: center;
+}
+
+.nav-links li {
+    display: block;
 }
 
 .nav-links a {
@@ -44,60 +54,109 @@
     padding: 10px 20px;
     border-radius: 15px;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a:hover {
     background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .nav-links a i {
     margin-right: 8px;
+    font-size: 16px;
 }
 
-.glass-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    position: relative;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
+/* Hamburger Menu Button */
 .hamburger {
     display: none;
     font-size: 24px;
     background: none;
     border: none;
     cursor: pointer;
-    color: #fff;
+    color: white;
+    padding: 8px;
+    z-index: 1001;
+    transition: all 0.3s ease;
 }
 
-/* Mobile View */
-@media screen and (max-width: 768px) {
-    .nav-links {
-        position: absolute;
-        top: 70px;
-        right: 0;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        padding: 20px;
-        display: none;
-        border-radius: 10px;
-        z-index: 999;
-    }
+.hamburger:hover {
+    color: #ff6b6b;
+}
 
-    .nav-links.show {
-        display: flex;
+/* Mobile View (768px and below) */
+@media screen and (max-width: 768px) {
+    .glass-nav {
+        padding: 15px 20px;
     }
 
     .hamburger {
         display: block;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 80px; /* adjust based on navbar height */
+        left: 0;
+        width: 100%;
+        background: rgba(255, 133, 78, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 20px 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        display: none;
+        z-index: 9999;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        margin-top: -10px;
+    }
+
+    .nav-links.show {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 20px;
+        font-weight: bold;
+        padding: 15px 20px;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        color: white;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: none;
+    }
+
+    .hamburger.active {
+        color: #ff6b6b;
+        transform: rotate(90deg);
+    }
+}
+
+/* Animation for menu */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
