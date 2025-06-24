@@ -415,20 +415,22 @@
 </head>
 <body>
 
-    <nav class="glass-nav">
-    <div class="logo">
-        <a href="index.html"><h1>Color<span>Craze</span></h1></a>
-    </div>
-    
-    <button class="hamburger"><i class="fas fa-bars"></i></button> <!-- move outside UL -->
+   <nav class="glass-nav">
+  <div class="logo">
+    <a href="index.html"><h1>Color<span>Craze</span></h1></a>
+  </div>
 
-    <ul class="nav-links">
-        <li><a href="login-form.html"><i class="fas fa-user"></i> Login</a></li>
-        <li><a href="Subscription.html"><i class="fas fa-newspaper"></i> Subscription</a></li>
-        <li><a href="about-page.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-        <li><a href="feedback-page.html"><i class="fas fa-comment-dots"></i> Feedback</a></li>
-    </ul>
+  <button class="hamburger"><i class="fas fa-bars"></i></button>
+
+  <ul class="nav-links">
+    <li><a href="login-form.html"><i class="fas fa-user"></i> Login</a></li>
+    <li><a href="Subscription.html"><i class="fas fa-newspaper"></i> Subscription</a></li>
+    <li><a href="about-page.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+    <li><a href="feedback-page.html"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+  </ul>
 </nav>
+
+    
 
     <!-- Floating elements -->
     <div class="float-element star" style="top: 10%; left: 10%;"></div>
@@ -464,11 +466,13 @@
         <label class="input-label" for="register-username">First Name</label>
         <input type="text" id="register-firstname" name="firstName" class="input-field" required>
         <div class="error-message" id="register-username-error"></div>
+        <div class="input-icon">👤</div>
     </div>
     <div class="input-group">
         <label class="input-label" for="register-username">Last Name</label>
         <input type="text" id="register-lastname" name="lastName" class="input-field" required>
         <div class="error-message" id="register-username-error"></div>
+        <div class="input-icon">👤</div>    
     </div>
     <div class="input-group">
         <label class="input-label" for="register-username">Username</label>
@@ -480,18 +484,21 @@
         <label class="input-label" for="register-email">Email</label>
         <input type="email" id="register-email" name="email" class="input-field" required>
         <div class="error-message" id="register-email-error"></div>
+        <div class="input-icon">✉️</div>
     </div>
     
     <div class="input-group">
         <label class="input-label" for="register-password">Password</label>
         <input type="password" id="register-password" name="password" class="input-field" required>
         <div class="error-message" id="register-password-error"></div>
+        <div class="input-icon">🔒</div>
     </div>
     
     <div class="input-group">
         <label class="input-label" for="register-confirm-password">Confirm Password</label>
         <input type="password" id="register-confirm-password" name="confirm_password" class="input-field" required>
         <div class="error-message" id="register-confirm-password-error"></div>
+        <div class="input-icon">🔐</div>
     </div>
     
     <div class="input-group">
@@ -541,6 +548,7 @@
     
     
     <script src="js/register.js"></script>
-    <script src="js/nav.js"></script>
+     <script src="js/othernev.js"></script>
+    
     </body>
 </html>
