@@ -1,3 +1,4 @@
+/* Container Styles */
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -7,7 +8,10 @@
     max-width: 1200px;
     margin: auto;
     transition: transform 0.3s ease-out;
+    justify-items: center; /* Added to center books */
 }
+
+/* Book Styles - Unchanged but kept for completeness */
 .book {
     margin-top: 20px;
     position: relative;
@@ -25,11 +29,11 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-   flex-direction: column;
+    flex-direction: column;
     color: #000;
-  }
-  
-  .cover {
+}
+
+.cover {
     top: 0;
     position: absolute;
     background-color: lightgray;
@@ -54,80 +58,128 @@
     -ms-flex-pack: center;
     justify-content: center;
     border-radius: 10px;
-  }
-  img{
+}
+
+img {
     width: 100%;
     height: 100%;
-  }
-  
-  .book:hover .cover {
+    object-fit: cover; /* Added for better image handling */
+    border-radius: 10px; /* Added to match parent */
+}
+
+.book:hover .cover {
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
     -webkit-transform: rotatey(-150deg);
     -ms-transform: rotatey(-140deg);
     transform: rotatey(-130deg);
     border-radius: 10px;
-  }
-  
-  p {
-    font-size: 12.1px;
-  }
+}
 
-  .books{
+/* Books container - Unchanged */
+.books {
     display: flex;
     flex-wrap: wrap;
     row-gap: 70px;
     column-gap: 190px;
     margin-left: 100px;
     align-items: center;
-  }
+}
 
-  /* From Uiverse.io by adamgiebl */ 
-.Button  {
-  position: relative;
-  display: inline-block;
-  display: block;
-  margin: 15px;
-  padding: 15px 30px;
-  text-align: center;
-  font-size: 12px;
-  letter-spacing: 1px;
-  text-decoration: none;
-  color: #ff6f02;
-  background: transparent;
-  cursor: pointer;
-  transition: ease-out 0.5s;
-  border: 2px solid #f5a970;
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 0 #f5a970;
-  width: 150px;
-  text-align: center;
-  margin-left: 40px;
-  border-radius: 25px;
+/* Responsive Adjustments - Added to fix mobile display */
+@media screen and (max-width: 1024px) {
+    .container {
+        column-gap: 80px;
+    }
+    .books {
+        column-gap: 120px;
+        margin-left: 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        row-gap: 40px;
+        column-gap: 60px;
+    }
+    .books {
+        column-gap: 80px;
+        margin-left: 40px;
+        row-gap: 50px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+        padding: 15px;
+    }
+    .books {
+        flex-direction: column;
+        margin-left: 0;
+        row-gap: 40px;
+        column-gap: 0;
+        align-items: center;
+    }
+    .book {
+        width: 200px;
+        height: 280px;
+    }
+}
+
+/* All other existing styles remain unchanged */
+p {
+    font-size: 12.1px;
+}
+
+.Button {
+    position: relative;
+    display: inline-block;
+    display: block;
+    margin: 15px;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #ff6f02;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid #f5a970;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 #f5a970;
+    width: 150px;
+    text-align: center;
+    margin-left: 40px;
+    border-radius: 25px;
 }
 
 .Button:hover {
-  color: white;
-  box-shadow: inset 0 -100px 0 0 #edaf43;
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #edaf43;
 }
 
 .Button:active {
-  transform: scale(0.9);
+    transform: scale(0.9);
 }
 
-.content{
-  text-align: center;
+.content {
+    text-align: center;
 }
 
 .shift-right {
-  transform: translateX(60px);
+    transform: translateX(60px);
 }
 
-a{
-  text-decoration: none;
+a {
+    text-decoration: none;
 }
-.name{
-  text-align: center;
-  color: #000;
-  text-size-adjust: 20px;
+
+.name {
+    text-align: center;
+    color: #000;
+    text-size-adjust: 20px;
 }
