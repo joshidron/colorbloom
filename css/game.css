@@ -14,7 +14,6 @@
     transform: translateX(60px);
 }
 
-
 /* Game Card */
 .game-card {
     width: 300px;
@@ -100,5 +99,18 @@
 .play-now:hover {
     background: #0056b3;
     transform: scale(1.05);
+}
+
+/* Responsive Layout for Mobile - Single Column */
+@media screen and (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr !important;
+        justify-items: center;
+    }
+
+    .game-card {
+        width: 100%;
+        max-width: 300px;
+    }
 }
 
