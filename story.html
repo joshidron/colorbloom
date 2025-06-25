@@ -2,7 +2,8 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>📖 Story</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
         <link rel="stylesheet" href="css/story&rhymes.css">
@@ -26,35 +27,39 @@
             <li><a href="Subscription.html"><i class="fas fa-bell"></i> <span>Subscription</span></a></li>
             <li><a href="feedback-page.html"><i class="fas fa-comment-dots"></i> <span>Feedback</span></a></li>
         </ul>
+        <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
     </div>
      
     <nav class="navbar">
         <button class="hamburger"><i class="fas fa-bars"></i></button>
-    <ul class="navbar-nav">
-        <li><a class="nav-link" href="index.html" data-text="Home"> <i class="fas fa-home" style="color: red; transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightpink'" onmouseout="this.style.backgroundColor=''"> </i> </a> </li>
-        <li><a class="nav-link" href="game.html" data-text="Fun Games"><i class="fas fa-gamepad" style="color: blue;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightgreen'" onmouseout="this.style.backgroundColor=''"></i></a></li>
-        <li><a class="nav-link" href="e-larning.html" data-text="E-Learning"><i class="fas fa-graduation-cap" style="color: orangered;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='peru'" onmouseout="this.style.backgroundColor=''"></i></a></li>
-        <li><a class="nav-link" href="creative.html" data-text="Creative Zone"><i class="fas fa-paint-brush" style="color: lawngreen;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='plum'" onmouseout="this.style.backgroundColor=''"></i></a></li>
-        <li><a class="nav-link" href="story.html" data-text="Stories"><i class="fas fa-book-open" style="color: gold;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightcoral'" onmouseout="this.style.backgroundColor=''"></i></a></li>
-        <li><a class="nav-link" href="rhymes.html" data-text="Rhymes"><i class="fas fa-music" style="color: purple; transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''"></i></a></li>
-        <li><a class="nav-link" href="comic.html" data-text="Comics"><i class="fas fa-book" style="color: chocolate;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='khaki'" onmouseout="this.style.backgroundColor=''"></i></a></li>
-        <li><a class="nav-link feature-link" href="robot.html" data-text="Titans Bot"><i class="fas fa-robot" style="color: rgb(115, 184, 231); transition: background 0.3s;"onmouseover="this.style.backgroundColor='lightgray'" onmouseout="this.style.backgroundColor=''"></i></a></li>
-    </ul>
-</nav>
+        <ul class="navbar-nav">
+            <li><a class="nav-link" href="index.html" data-text="Home"> <i class="fas fa-home" style="color: red; transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightpink'" onmouseout="this.style.backgroundColor=''"> </i> </a> </li>
+            <li><a class="nav-link" href="game.html" data-text="Fun Games"><i class="fas fa-gamepad" style="color: blue;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightgreen'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+            <li><a class="nav-link" href="e-larning.html" data-text="E-Learning"><i class="fas fa-graduation-cap" style="color: orangered;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='peru'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+            <li><a class="nav-link" href="creative.html" data-text="Creative Zone"><i class="fas fa-paint-brush" style="color: lawngreen;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='plum'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+            <li><a class="nav-link" href="story.html" data-text="Stories"><i class="fas fa-book-open" style="color: gold;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightcoral'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+            <li><a class="nav-link" href="rhymes.html" data-text="Rhymes"><i class="fas fa-music" style="color: purple; transition: background 0.3s;" onmouseover="this.style.backgroundColor='lightblue'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+            <li><a class="nav-link" href="comic.html" data-text="Comics"><i class="fas fa-book" style="color: chocolate;  transition: background 0.3s;" onmouseover="this.style.backgroundColor='khaki'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+            <li><a class="nav-link feature-link" href="robot.html" data-text="Titans Bot"><i class="fas fa-robot" style="color: rgb(115, 184, 231); transition: background 0.3s;"onmouseover="this.style.backgroundColor='lightgray'" onmouseout="this.style.backgroundColor=''"></i></a></li>
+        </ul>
+    </nav>
 
-    <input type="text" id="search" placeholder="Search..." onkeyup="searchCards()">
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search stories..." onkeyup="searchCards()">
+        <i class="fas fa-search search-icon"></i>
+    </div>
 
     <div class="container">
-         <!-- Card 1 -->
-         <div class="story-card">
+        <!-- Card 1 -->
+        <div class="story-card">
             <div class="story-media">
-                <img src="image/story/ramayna.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/ramayna.jpg" alt="Ramayana Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/ramayan.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Ramayna</p>
+                <h3>Ramayana</h3>
                 <a href="video/story/Ramayana _ Lord Rama _ 3D Animated Short Film 2020 _ Cordova Joyful Learning - Cordova Joyful Learning (1080p, h264, youtube).mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -62,13 +67,13 @@
         <!-- Card 2 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/mahran.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/mahran.jpg" alt="Maharana Pratap Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/mahrana.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Mahrana Pratap</p>
+                <h3>Maharana Pratap</h3>
                 <a href="video/story/MAHARANA PRATAP II महाराणा प्रताप II 3D Animation Movie II Veer Shiromani Maharana Partap __ - Cordova Joyful Learning (720p, h264, youtube).mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -76,13 +81,13 @@
         <!-- Card 3 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/SHIVAJI.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/SHIVAJI.jpg" alt="Chatrapati Shivaji Maharaj Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/shivaji.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Chatrapati Shivaji mahraj</p>
+                <h3>Chatrapati Shivaji Maharaj</h3>
                 <a href="video/story/Shivaji _ Chattrapati Shivaji Maharaj _ 3d Animation Song 2020 _ Cordova Joyful Learning - Cordova Joyful Learning (720p, h264, youtube).mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -90,13 +95,13 @@
         <!-- Card 4 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/subhash.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/subhash.jpg" alt="Subhas Chandra Bose Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/subash.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Subhas Chandra Bose</p>
+                <h3>Subhas Chandra Bose</h3>
                 <a href="video/story/Netaji Subhash Chandra Bose - Freedom Fighter - History of India _ Educational Videos by Mocomi Kids - MocomiKids (1080p, h264, youtube).mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -104,13 +109,13 @@
         <!-- Card 5 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/laxmi bai.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/laxmi bai.jpg" alt="Rani Laxmibai Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/laxmi.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Rani Laxmibai</p>
+                <h3>Rani Laxmibai</h3>
                 <a href="video/story/laxmi bai.mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -118,13 +123,13 @@
         <!-- Card 6 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/grizzy.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/grizzy.jpg" alt="Grizzy Bear Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/griz.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Grizzy Bear</p>
+                <h3>Grizzy Bear</h3>
                 <a href="video/story/grizzy.mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -132,13 +137,13 @@
         <!-- Card 7 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/bandar.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/bandar.jpg" alt="Budhiman Bandar Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/bandar.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Budhiman Bandar</p>
+                <h3>Budhiman Bandar</h3>
                 <a href="video/story/बुद्धिमान बंदर की कहानी _ बंदर और मगरमच्छ _  Monkey and Crocodile in Hindi _ HindiFairyTales - Hindi Fairy Tales (1080p, h264, youtube).mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -146,13 +151,13 @@
         <!-- Card 8 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/cinnderella.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/cinnderella.jpg" alt="Yodha Ki Khoj Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/yodha.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Yodha Ki Khoj</p>
+                <h3>Yodha Ki Khoj</h3>
                 <a href="video/story/योद्धा की खोज _ A Quest for the Glitchy Knight in Hindi _ HindiFairyTales - Hindi Fairy Tales (1080p, h264, youtube).mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -160,13 +165,13 @@
         <!-- Card 9 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/lione&mouse.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/lione&mouse.jpg" alt="Lion and Mouse Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/sher.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Lion and Mouse </p>
+                <h3>Lion and Mouse</h3>
                 <a href="video/story/शेर और चूहा _ Lion and Mouse in Hindi _ HindiFairyTales - Hindi Fairy Tales (1080p, h264, youtube).mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -174,13 +179,13 @@
         <!-- Card 10 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/onedayking.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/onedayking.jpg" alt="Ek Din ka Raja Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/one day.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>Ek Din ka Raja </p>
+                <h3>Ek Din ka Raja</h3>
                 <a href="video/story/एक दिन का राजा _ Ek Din ka Raja _ sher ki kahani _ Hindi Kahani _Hindi Kahaniyan _ Kahani _ kahaniya - Shinzoo TV - Hindi (1080p, h264, youtube).mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -188,13 +193,13 @@
         <!-- Card 11 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/tom.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/tom.jpg" alt="Tom and Jerry Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/tom.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>TOM VE JERRY</p>
+                <h3>Tom and Jerry</h3>
                 <a href="video/story/TOM VE JERRY.mp4" class="play-now">Play Now</a>
             </div>
         </div>
@@ -202,22 +207,22 @@
         <!-- Card 12 -->
         <div class="story-card">
             <div class="story-media">
-                <img src="image/story/wolf.jpg" alt="Game Image" class="game-image">
-                <video class="story-video" muted loop>
+                <img src="image/story/wolf.jpg" alt="The Wolf and The Seven Little Goats Story" class="story-image" loading="lazy">
+                <video class="story-video" muted loop playsinline>
                     <source src="video/story/pre/wolf.mp4" type="video/mp4">
                 </video>
             </div>
             <div class="story-info">
-                <p>The Wolf and The Seven Little Goats</p>
+                <h3>The Wolf and The Seven Little Goats</h3>
                 <a href="video/story/The Wolf and The Seven Little Goats Story _ Animated Stories For Kids - Full Story By Kids Hut - T-Series Kids Hut (1080p, h264, youtube).mp4" class="play-now">Play Now</a>
             </div>
         </div>
     </div>
 
     <div class="pagination">
-        <button onclick="changePage(-1)" id="prevBtn">Previous</button>
-        <ul id="paginationList"></ul>
-        <button onclick="changePage(1)" id="nextBtn">Next</button>
+        <button onclick="changePage(-1)" id="prevBtn" aria-label="Previous page">Previous</button>
+        <ul id="paginationList" role="navigation"></ul>
+        <button onclick="changePage(1)" id="nextBtn" aria-label="Next page">Next</button>
     </div>
     
 
@@ -227,35 +232,34 @@
         <div class="footer-column">
             <h4>Quick Links</h4>
             <ul>
-                <li><a href="game.html"><i class="fas fa-gamepad"></i> Games</a></li>
-                <li><a href="e-larning.html"><i class="fas fa-graduation-cap"></i> E-Learning</a></li>
-               <li><a href="creative.html"><i class="fas fa-paint-brush"></i> Creative Zone</a></li>
+                <li><a href="game.html"><i class="fas fa-gamepad"></i> <span>Games</span></a></li>
+                <li><a href="e-larning.html"><i class="fas fa-graduation-cap"></i> <span>E-Learning</span></a></li>
+               <li><a href="creative.html"><i class="fas fa-paint-brush"></i> <span>Creative Zone</span></a></li>
             </ul>
         </div>
         <div class="footer-column">
             <h4>Community</h4>
             <ul>
-                <li><a href="story.html"><i class="fas fa-book-open"></i> Stories</a></li>
-                <li><a href="rhymes.html"><i class="fas fa-music"></i> Rhymes</a></li>
-                <li><a href="comic.html"><i class="fas fa-book"></i> Comics</a></li>
+                <li><a href="story.html"><i class="fas fa-book-open"></i> <span>Stories</span></a></li>
+                <li><a href="rhymes.html"><i class="fas fa-music"></i> <span>Rhymes</span></a></li>
+                <li><a href="comic.html"><i class="fas fa-book"></i> <span>Comics</span></a></li>
             </ul>
         </div>
         <div class="footer-column">
             <h4>Support</h4>
             <ul>
-                <li><a href="about-page.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                <li><a href="feedback-page.html"><i class="fas fa-comment-dots"></i> Feedback</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="about-page.html"><i class="fas fa-info-circle"></i> <span>About Us</span></a></li>
+                <li><a href="feedback-page.html"><i class="fas fa-comment-dots"></i> <span>Feedback</span></a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
             </ul>
         </div>
         <div class="footer-column social-column">
             <h4>Connect With Us</h4>
             <div class="social-icons">
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:your-email@example.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:your-email@example.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
-            
         </div>
     </div>
     <div class="footer-bottom">
