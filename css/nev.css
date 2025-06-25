@@ -40,7 +40,7 @@ body::before {
     top: 10px; /* moved closer to top */
     left: 0;
     width: 70px; /* Narrow width showing only icons */
-    height: 300px; /* Further reduced height */
+    height: 268px; /* Further reduced height */
     background: rgba(16, 5, 5, 0.1);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(10px);
@@ -126,7 +126,7 @@ body::before {
     flex: 1; /* fill remaining height */
     display: flex;
     flex-direction: column;
-    gap: 12px; /* reduced gap */
+    gap: 5px; /* reduced gap */
 }
 
 /* Navigation link items */
@@ -314,10 +314,12 @@ body::before {
     background: transparent;
     position: absolute;
     top: 10px;
-    left: 45%;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 10;
     transition: all 0.3s ease-in-out;
 }
+
 
 @media (max-width: 768px) {
     .navbar {
