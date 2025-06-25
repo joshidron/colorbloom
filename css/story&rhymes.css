@@ -1,5 +1,5 @@
 /* Container */
-.container {
+.container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 50px;
@@ -13,7 +13,8 @@
     transform: translateX(60px);
 }
 
-/* Story Card */
+
+/* Game Card */
 .story-card {
     width: 300px;
     border-radius: 10px;
@@ -22,17 +23,16 @@
     background: transparent;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
-    margin: 0 auto;
 }
 
 .story-card:hover {
     transform: scale(1.05);
 }
 
-/* Media Section */
+/* Game Media */
 .story-media {
     width: 100%;
-    height: 220px;
+    height: 200px;
     position: relative;
     border-bottom: 2px solid #007bff;
 }
@@ -62,7 +62,7 @@
     opacity: 0;
 }
 
-/* Info Section */
+/* Game Info */
 .story-info {
     padding: 15px;
     background: transparent;
@@ -75,23 +75,20 @@
 }
 
 .story-info h5 {
-    margin: 0;
+    margin: 0 0 8px 0;
     font-size: 1.5rem;
     color: #333;
     line-height: 1.3;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0 10px;
 }
 
 .story-info p {
     font-size: 1rem;
     color: #151414;
-    margin: 5px 0;
+    margin: 0;
+    padding: 5px 0;
     line-height: 1.4;
-    word-break: break-word;
-    padding: 0 10px;
+    white-space: normal;
+    overflow: visible;
 }
 
 .play-now {
@@ -99,13 +96,19 @@
     width: 90%;
     text-align: center;
     padding: 10px;
-    margin: 10px auto 5px;
+    margin: 10px auto 5px auto;
     background: #007bff;
     color: white;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
     transition: background 0.3s, transform 0.2s;
+    margin-top: auto; /* Pushes button to bottom */
+}
+
+.play-now:hover {
+    background: #0056b3;
+    transform: scale(1.05);
 }
 
 .play-now:hover {
@@ -129,7 +132,7 @@
     position: relative;
     margin: auto;
     padding: 20px;
-    width: 90%;
+    width: 80%;
     max-width: 800px;
     top: 50%;
     transform: translateY(-50%);
@@ -152,58 +155,29 @@
 
 .close-btn:hover {
     color: #ccc;
-}
+}   
 
-/* Tablet Responsive */
-@media screen and (max-width: 768px) {
-    .container {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        padding: 15px;
-        justify-items: center;
-    }
-    .story-card {
-        width: 300px;
-    }
-    .story-media {
-        height: 220px;
-    }
+
+/* Mobile Responsive Fixes */
+
+/* Responsive adjustments */
+@media screen and (max-width: 480px) {
     .story-info {
-        min-height: 120px;
+        min-height: 110px;
         padding: 12px;
     }
-}
-
-/* Mobile Responsive */
-@media screen and (max-width: 480px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-        gap: 20px;
-    }
-    .story-card {
-        width: 300px;
-    }
-    .story-media {
-        height: 200px;
-    }
-    .story-info {
-        padding: 10px;
-    }
+    
     .story-info h5 {
-        font-size: 1.2rem;
-        white-space: normal;
-        line-height: 1.2;
+        font-size: 1.3rem;
+        margin-bottom: 6px;
     }
+    
     .story-info p {
         font-size: 0.9rem;
-        margin: 4px 0;
     }
+    
     .play-now {
         padding: 8px;
         font-size: 0.9rem;
-        margin-top: 8px;
     }
 }
