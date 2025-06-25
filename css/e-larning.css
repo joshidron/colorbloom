@@ -15,7 +15,7 @@ body {
 /* Alphabet Container */
 #alphabet-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    grid-template-columns: repeat(9, 1fr); /* 9 columns for the first two rows */
     gap: 20px;
     padding: 2rem 4rem;
     max-width: 1200px;
@@ -23,6 +23,45 @@ body {
     margin: 0 auto;
 }
 
+/* Last row adjustment */
+#alphabet-container .alphabet:nth-child(n+19) {
+    grid-column: span 1; /* Each of the last row letters will occupy 1 column */
+}
+
+/* Centering the last row */
+#alphabet-container .alphabet:nth-child(19) {
+    grid-column: 2; /* Start the last row at the second column */
+}
+
+#alphabet-container .alphabet:nth-child(20) {
+    grid-column: 3; /* Second letter in the last row */
+}
+
+#alphabet-container .alphabet:nth-child(21) {
+    grid-column: 4; /* Third letter in the last row */
+}
+
+#alphabet-container .alphabet:nth-child(22) {
+    grid-column: 5; /* Fourth letter in the last row */
+}
+
+#alphabet-container .alphabet:nth-child(23) {
+    grid-column: 6; /* Fifth letter in the last row */
+}
+
+#alphabet-container .alphabet:nth-child(24) {
+    grid-column: 7; /* Sixth letter in the last row */
+}
+
+#alphabet-container .alphabet:nth-child(25) {
+    grid-column: 8; /* Seventh letter in the last row */
+}
+
+#alphabet-container .alphabet:nth-child(26) {
+    grid-column: 9; /* Eighth letter in the last row */
+}
+
+/* Alphabet Items */
 .alphabet {
     width: 70px;
     height: 70px;
@@ -79,6 +118,7 @@ body {
     display: none; /* Initially hidden */
     border: 2px solid #d9534f; /* Red accent */
     z-index: 15;
+    margin-top: 10%;
 }
 
 /* Footer Styles */
@@ -179,3 +219,4 @@ body {
         gap: 1rem;
     }
 }
+   
