@@ -1,3 +1,38 @@
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Search Container */
+.search-container {
+    position: relative;
+    max-width: 500px;
+    margin: 20px auto;
+    width: 90%;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+#search {
+    width: 100%;
+    padding: 12px 40px 12px 15px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
 /* Container */
 .container {
     display: grid;
@@ -72,6 +107,7 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 120px;
+    color: #151414;
 }
 
 .story-info h5 {
@@ -156,18 +192,40 @@
 
 /* Tablet Responsive */
 @media screen and (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.9);
+        z-index: 1000;
+    }
+
     .container {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
         padding: 15px;
         justify-items: center;
     }
+
     .story-card {
         width: 300px;
     }
+
     .story-media {
         height: 220px;
     }
+
     .story-info {
         min-height: 120px;
         padding: 12px;
@@ -183,24 +241,30 @@
         padding: 10px;
         gap: 20px;
     }
+
     .story-card {
         width: 300px;
     }
+
     .story-media {
         height: 200px;
     }
+
     .story-info {
         padding: 10px;
     }
+
     .story-info h5 {
         font-size: 1.2rem;
         white-space: normal;
         line-height: 1.2;
     }
+
     .story-info p {
         font-size: 0.9rem;
         margin: 4px 0;
     }
+
     .play-now {
         padding: 8px;
         font-size: 0.9rem;
