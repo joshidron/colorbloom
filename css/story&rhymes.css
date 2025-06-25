@@ -62,7 +62,7 @@
     opacity: 0;
 }
 
-/* Info Section - Fixed Text Stacking */
+/* Info Section */
 .story-info {
     padding: 15px;
     background: transparent;
@@ -157,19 +157,19 @@
 /* Tablet Responsive */
 @media screen and (max-width: 768px) {
     .container {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 30px;
         padding: 15px;
+        justify-items: center;
     }
     .story-card {
-        width: 100%;
-        max-width: 320px;
+        width: 300px;
     }
     .story-media {
-        height: 240px;
+        height: 220px;
     }
     .story-info {
-        min-height: 130px;
+        min-height: 120px;
         padding: 12px;
     }
 }
@@ -177,19 +177,19 @@
 /* Mobile Responsive */
 @media screen and (max-width: 480px) {
     .container {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         padding: 10px;
         gap: 20px;
     }
     .story-card {
-        width: 100%;
-        max-width: 100%;
+        width: 300px;
     }
     .story-media {
         height: 200px;
     }
     .story-info {
-        min-height: auto;
         padding: 10px;
     }
     .story-info h5 {
